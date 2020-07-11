@@ -1,7 +1,7 @@
 package com.starwars.api.services.Impl;
 
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,16 +38,17 @@ public class PlanetaServiceImpl implements PlanetaService {
 	
 	@Override
 	public Planeta listarPorNome(String nome) {
-		return this.planetaRepository.findById(nome).get();
+		return Optional.ofNullable(this.planetaRepository.findByNome(nome))
+				.orElseThrow(() -> new IllegalArgumentException("Este Planeta não existe"));
 				
 	}
 	
 	
 	
-	
 	@Override
 	public Planeta listarPorId(String id) {
-		return this.planetaRepository.findById(id).get();
+		return Optional.ofNullable(this.planetaRepository.findById(id))
+				.orElseThrow(() -> new IllegalArgumentException("Este Planeta não existe"));
 	}
 
 
