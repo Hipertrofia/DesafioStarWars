@@ -1,5 +1,6 @@
 package com.starwars.api.documents;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.data.annotation.Id;
@@ -10,8 +11,14 @@ public class Planeta {
 
 	@Id
 	private String id;
+	
+	@NotBlank
 	private String nome;
+	
+	@NotBlank
 	private String clima;
+	
+	@NotBlank
 	private String terreno;
 	
 	public Planeta() {

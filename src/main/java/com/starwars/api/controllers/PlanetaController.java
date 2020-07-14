@@ -50,7 +50,7 @@ public class PlanetaController {
 	}
 
 	@GetMapping(path="/{nome}")
-    public ResponseEntity<Response<Planeta>> listarPorNome(@PathVariable(name="nome")String nome){
+    public ResponseEntity<Response<Planeta>> listarPorNome(@Valid @PathVariable(name="nome")String nome){
 		return ResponseEntity.ok(new Response<Planeta>(planetaService.listarPorNome(nome)));
 	}
 	
